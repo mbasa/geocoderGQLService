@@ -1,0 +1,20 @@
+type Query {
+    geocoder( addr: String ): Address
+    reverseGeocoder( x: Float y: Float ): Address
+}
+
+type Address {
+    code: Int
+    address: String
+    todofuken: String
+    shikuchoson: String
+    ooaza: String
+    chiban: String
+    go: String
+    coordinates: Coordinates
+}
+
+type Coordinates {
+    x: Float
+    y: Float
+}
