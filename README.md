@@ -1,60 +1,70 @@
-GeocoderService
-===============
+GraphQL GeocoderService
+=======================
 
-Web Service front-end for pgGeocoder
+GraphQL Web Service for pgGeocoder. This gives the user the ability to choose
+and receive only the required fields when doing a Geocoder or Reverse Geocoder
+requests. 
+
 
 ### Build
-Use Maven to create a WAR file by:
+Use Maven to build and create a WAR file by:
 
 ```
   mvn clean install
 ```
 
 ### Test
-Run the following command to test the application before deploying to Tomcat
+Run the following command to test the application before deployment
 
 ```
 mvn spring-boot:run
 ```
 
-### View Swagger
-To view the Swagger API List page
+### View Interactive GraphQL
+To view the GraphQL Integrated Development Environment tool, view:
 
 ```
-http://localhost:8080/geocoderService/
+http://localhost:8080/graphiql
 ```
 
-### Deploy
+### Deploy in a Tomcat Application Server
+
 Copy the created WAR file into the [TomcatDir]/webapps directory and start Tomcat. 
 Then edit the properties file for the correct database connection settings.
 
-### Usage
-For Geocoder JSON output
+
+### Deploy in a Serverless Environment
+
+To run the application in a serverless environment (no Application Server), do:
 
 ```
-http://localhost:8080/geocoderService/service/geocode/json/<Address or PlaceName>
+java -jar geocoderGQLService.war
 ```
 
-For Geocoder GeoJSON output
 
-```
-http://localhost:8080/geocoderService/service/geocode/geojson/<Address or PlaceName>
-```
+### Sample Curl Requests
 
-For Reverse Geocoder JSON output
+* For Geocoder Requests
 
-```
-http://localhost:8080/geocoderService/service/reversegeocode/json/<Lon>,<Lat>
+```shell
+curl http://localhost:8080/graphql -X POST -H 'content-type: application/json' -d '{"query":"query{  geocoder(addr:\"東京都杉並区荻窪一丁目7-13\"){code address todofuken shikuchoson ooaza chiban go coordinates{x y}}}"}'            
 ```
 
-```
-http://localhost:8080/geocoderService/service/reversegeocode/json/<Lon>,<Lat>,<Distance>
+  **Result**
+
+```json
+{"data":{"geocoder":{"code":1,"address":"東京都杉並区荻窪一丁目7-13","todofuken":"東京都","shikuchoson":"杉並区","ooaza":"荻窪一丁目","chiban":"7","go":"13","coordinates":{"x":139.62062072753906,"y":35.69243621826172}}}}
 ```
 
-For Reverse Geocoder JSON output with PlaceNames
-<br>(Note: useaddr,category,owner Query Parameters are optional)
+* For Reverse Geocoder Requests
 
+```shell
+curl http://localhost:8080/graphql -X POST -H 'content-type: application/json' -d '{"query":"query{  reverseGeocoder(x:139.61984252929688 y:35.71017837524414){code address todofuken shikuchoson ooaza chiban go coordinates{y x}}}"}'
 ```
-http://localhost:8080/geocoderService/service/reversegeocode/json/<Lon>,<Lat>,<Distance>?useaddr=false&category=<Category>&owner=<Owner>
-```
+
+  **Result**
   
+```json
+{"data":{"reverseGeocoder":{"code":1,"address":"東京都杉並区清水一丁目3-4","todofuken":"東京都","shikuchoson":"杉並区","ooaza":"清水一丁目","chiban":"3","go":"4","coordinates":{"y":35.71017837524414,"x":139.61984252929688}}}}
+```
+
