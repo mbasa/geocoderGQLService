@@ -11,6 +11,7 @@ package org.geocoderGQLService.bean;
  * 説明：
  *
  */
+
 public class GeocoderResultBean {
 
     private int code;
@@ -21,7 +22,9 @@ public class GeocoderResultBean {
     private String chiban = "";
     private String go = "";
     private String details = "";
+
     private CoordinatesBean coordinates = new CoordinatesBean();
+    private MeshPopBean meshinfo = new MeshPopBean();
 
     /**
      * コンストラクタ
@@ -149,15 +152,6 @@ public class GeocoderResultBean {
     public void setY(double y) {
         this.coordinates.setY(y);
     }
-    /*
-     * public double getX() {
-     * return this.coordinates.getX();
-     * }
-     * 
-     * public double getY() {
-     * return this.coordinates.getY();
-     * }
-     */
 
     /**
      * @return details を取得する
@@ -171,6 +165,20 @@ public class GeocoderResultBean {
      */
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    /**
+     * @return meshinfo を取得する
+     */
+    public MeshPopBean getMeshinfo() {
+        return meshinfo;
+    }
+
+    /**
+     * @param meshinfo meshinfo を設定する
+     */
+    public void setMeshinfo(MeshPopBean meshinfo) {
+        this.meshinfo = meshinfo;
     }
 
 }

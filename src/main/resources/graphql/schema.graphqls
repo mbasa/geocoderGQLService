@@ -12,9 +12,91 @@ type Address {
     chiban: String
     go: String
     coordinates: Coordinates
+    meshinfo: MeshInfo
 }
 
 type Coordinates {
     x: Float
     y: Float
+}
+
+
+type MeshInfo {
+ mesh_id:     Int 
+ city_code:  Int 
+ pop2010:    Float 
+ pop2020:    Float 
+ pop2025:    Float 
+ pop2030:    Float 
+ pop2035:    Float 
+ pop2040:    Float 
+ pop2045:    Float 
+ pop2050:    Float 
+ index2020:  Float 
+ index2025:  Float 
+ index2030:  Float 
+ index2035:  Float 
+ index2040:  Float 
+ index2045:  Float 
+ index2050:  Float 
+ pop2010a:   Float 
+ pop2020a:   Float 
+ pop2025a:   Float 
+ pop2030a:   Float 
+ pop2035a:   Float 
+ pop2040a:   Float 
+ pop2045a:   Float 
+ pop2050a:   Float 
+ index2020a: Float 
+ index2025a: Float 
+ index2030a: Float 
+ index2035a: Float 
+ index2040a: Float 
+ index2045a: Float 
+ index2050a: Float 
+ pop2010b:   Float 
+ pop2020b:   Float 
+ pop2025b:   Float 
+ pop2030b:   Float 
+ pop2035b:   Float 
+ pop2040b:   Float 
+ pop2045b:   Float 
+ pop2050b:   Float 
+ index2020b: Float 
+ index2025b: Float 
+ index2030b: Float 
+ index2035b: Float 
+ index2040b: Float 
+ index2045b: Float 
+ index2050b: Float 
+ pop2010c:   Float 
+ pop2020c:   Float 
+ pop2025c:   Float 
+ pop2030c:   Float 
+ pop2035c:   Float 
+ pop2040c:   Float 
+ pop2045c:   Float 
+ pop2050c:   Float 
+ index2020c: Float 
+ index2025c: Float 
+ index2030c: Float 
+ index2035c: Float 
+ index2040c: Float 
+ index2045c: Float 
+ index2050c: Float 
+ pop2010d:   Float 
+ pop2020d:   Float 
+ pop2025d:   Float 
+ pop2030d:   Float 
+ pop2035d:   Float 
+ pop2040d:   Float 
+ pop2045d:   Float 
+ pop2050d:   Float 
+ index2020d: Float 
+ index2025d: Float 
+ index2030d: Float 
+ index2035d: Float 
+ index2040d: Float 
+ index2045d: Float 
+ index2050d: Float
 }
